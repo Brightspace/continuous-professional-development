@@ -107,11 +107,25 @@ export class CpdService {
 		return this.getRequest(api_path);
 	}
 
-	static getProgress(userId) {
-		if (!userId) {
-			return this.getRequest(CpdRoutes.RelativePath(CpdRoutes.Progress));
+	static getProgress(filters, userId) {
+		let api_path = userId ? CpdRoutes.RelativePath(CpdRoutes.UserProgress(userId)) : CpdRoutes.RelativePath(CpdRoutes.Progress);
+		if (filters) {
+			api_path += '?';
+			const query_params = [];
+			const { Subject, Method, Name, StartDate, EndDate } = filters;
+			if (Subject.value && Subject.enabled) query_params.push(`subject=${Subject.value}`);
+			if (Method.value && Method.enabled) query_params.push(`method=${Method.value}`);
+			if (Name.value) query_params.push(`recordName=${encodeURIComponent(Name.value)}`);
+			if (StartDate.value) query_params.push(`startDate=${dateParamString(StartDate.value)}`);
+			if (EndDate.value) query_params.push(`endDate=${dateParamString(EndDate.value, true)}`);
+			for (let i = 0; i < query_params.length; i++) {
+				if (i > 0) {
+					api_path += '&';
+				}
+				api_path += query_params[i];
+			}
 		}
-		return this.getRequest(CpdRoutes.RelativePath(CpdRoutes.UserProgress(userId)));
+		return this.getRequest(api_path);
 	}
 
 	static getQuestions() {
@@ -170,11 +184,25 @@ export class CpdService {
 		}
 		return this.getRequest(CpdRoutes.RelativePath(CpdRoutes.JobTarget(jobTitle)));
 	}
-	static getTargetRecords(userId) {
-		if (!userId) {
-			return this.getRequest(CpdRoutes.RelativePath(CpdRoutes.ReportRecords));
+	static getTargetRecords(filters, userId) {
+		let api_path = userId ? CpdRoutes.RelativePath(CpdRoutes.UserReportRecords(userId)) : CpdRoutes.RelativePath(CpdRoutes.ReportRecords);
+		if (filters) {
+			api_path += '?';
+			const query_params = [];
+			const { Subject, Method, Name, StartDate, EndDate } = filters;
+			if (Subject.value && Subject.enabled) query_params.push(`subject=${Subject.value}`);
+			if (Method.value && Method.enabled) query_params.push(`method=${Method.value}`);
+			if (Name.value) query_params.push(`recordName=${encodeURIComponent(Name.value)}`);
+			if (StartDate.value) query_params.push(`startDate=${dateParamString(StartDate.value)}`);
+			if (EndDate.value) query_params.push(`endDate=${dateParamString(EndDate.value, true)}`);
+			for (let i = 0; i < query_params.length; i++) {
+				if (i > 0) {
+					api_path += '&';
+				}
+				api_path += query_params[i];
+			}
 		}
-		return this.getRequest(CpdRoutes.RelativePath(CpdRoutes.UserReportRecords(userId)));
+		return this.getRequest(api_path);
 	}
 	static getTypes() {
 		return [ {

@@ -199,13 +199,13 @@ class MyCpdRecords extends BaseMixin(LitElement) {
 				this.cpdRecords = data;
 			});
 		if (!this.viewUserId) {
-			this.cpdService.getProgress()
+			this.cpdService.getProgress(this.filters)
 				.then((data) =>
 					this.progress = this.lowercasePropertyNames(data)
 				);
 		}
-
 	}
+
 	newRecordButtonClicked() {
 		this.fireNavigationEvent({page:'cpd-add-record'});
 	}
