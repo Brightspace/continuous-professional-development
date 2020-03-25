@@ -40,6 +40,9 @@ class CpdRecordReport extends BaseMixin(LitElement) {
 			},
 			userId: {
 				type: Number
+			},
+			filters: {
+				type: Object
 			}
 		};
 	}
@@ -134,6 +137,7 @@ class CpdRecordReport extends BaseMixin(LitElement) {
 		this.records = [];
 		this.questions = [];
 		this.progress = {};
+		this.filters = {};
 		this.types = this.cpdService.getTypes();
 	}
 

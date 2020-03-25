@@ -78,54 +78,54 @@ export class CpdService {
 		return this.getRequest(CpdRoutes.RelativePath(type));
 	}
 	static getJobTitleDefaults(page) {
-		let api_path = CpdRoutes.RelativePath(this.JobTitle);
-		api_path += `?pageNumber=${page}`;
-		return this.getRequest(api_path);
+		let url = CpdRoutes.RelativePath(this.JobTitle);
+		const searchParams = new URLSearchParams();
+		searchParams.append('pageNumber', page);
+		url = url.concat(`?${searchParams.toString()}`);
+		return this.getRequest(url);
 	}
 	static getMethods() {
 		return this.getRequest(CpdRoutes.RelativePath(this.Method));
 	}
 	static getMyTeam(page, filters) {
-		let api_path = CpdRoutes.RelativePath(this.Team);
-		api_path += `?pageNumber=${page}`;
+		let url = CpdRoutes.RelativePath(this.Team);
+		const searchParams = new URLSearchParams();
+		searchParams.append('pageNumber', page);
 		if (filters) {
 			const { Name } = filters;
-			if (Name && Name.value) api_path += `&searchTerm=${encodeURIComponent(Name.value)}`;
+			if (Name && Name.value) searchParams.append('searchTerm', Name.value);
 		}
-		return this.getRequest(api_path);
+		url = url.concat(`?${searchParams.toString()}`);
+		return this.getRequest(url);
 	}
 
 	static getPendingRecords(page, filters) {
-		let api_path = CpdRoutes.RelativePath(this.Pending);
-		api_path += `?pageNumber=${page}`;
+		let url = CpdRoutes.RelativePath(this.Pending);
+		const searchParams = new URLSearchParams();
+		searchParams.append('pageNumber', page);
 		if (filters) {
 			const { Name, StartDate, EndDate } = filters;
-			if (Name && Name.value) api_path += `&awardName=${encodeURIComponent(Name.value)}`;
-			if (StartDate && StartDate.value) api_path += `&startDate=${dateParamString(StartDate.value)}`;
-			if (EndDate && EndDate.value) api_path += `&endDate=${dateParamString(EndDate.value, true)}`;
+			if (Name.value) searchParams.append('recordName', Name.value);
+			if (StartDate.value) searchParams.append('startDate', dateParamString(StartDate.value));
+			if (EndDate.value) searchParams.append('endDate', dateParamString(EndDate.value, true));
 		}
-		return this.getRequest(api_path);
+		url = url.concat(`?${searchParams.toString()}`);
+		return this.getRequest(url);
 	}
 
 	static getProgress(filters, userId) {
-		let api_path = userId ? CpdRoutes.RelativePath(CpdRoutes.UserProgress(userId)) : CpdRoutes.RelativePath(CpdRoutes.Progress);
+		let url = userId ? CpdRoutes.RelativePath(CpdRoutes.UserProgress(userId)) : CpdRoutes.RelativePath(CpdRoutes.Progress);
 		if (filters) {
-			api_path += '?';
-			const query_params = [];
+			const searchParams = new URLSearchParams();
 			const { Subject, Method, Name, StartDate, EndDate } = filters;
-			if (Subject.value && Subject.enabled) query_params.push(`subject=${Subject.value}`);
-			if (Method.value && Method.enabled) query_params.push(`method=${Method.value}`);
-			if (Name.value) query_params.push(`recordName=${encodeURIComponent(Name.value)}`);
-			if (StartDate.value) query_params.push(`startDate=${dateParamString(StartDate.value)}`);
-			if (EndDate.value) query_params.push(`endDate=${dateParamString(EndDate.value, true)}`);
-			for (let i = 0; i < query_params.length; i++) {
-				if (i > 0) {
-					api_path += '&';
-				}
-				api_path += query_params[i];
-			}
+			if (Subject.value && Subject.enabled) searchParams.append('subject', Subject.value);
+			if (Method.value && Method.enabled) searchParams.append('method', Method.value);
+			if (Name.value) searchParams.append('recordName', Name.value);
+			if (StartDate.value) searchParams.append('startDate', dateParamString(StartDate.value));
+			if (EndDate.value) searchParams.append('endDate', dateParamString(EndDate.value, true));
+			url = url.concat(`?${searchParams.toString()}`);
 		}
-		return this.getRequest(api_path);
+		return this.getRequest(url);
 	}
 
 	static getQuestions() {
@@ -149,21 +149,21 @@ export class CpdService {
 			});
 	}
 	static getRecordSummary(page, viewUserId, filters) {
-		let base_path = `${CpdRoutes.RelativePath(this.Record)}?pageNumber=${page}`;
-		if (viewUserId) {
-			base_path = CpdRoutes.RelativePath(`${CpdRoutes.UserRecord}/${viewUserId}?pageNumber=${page}`);
-		}
+		let url = viewUserId ? CpdRoutes.RelativePath(`${CpdRoutes.UserRecord}/${viewUserId}`) : CpdRoutes.RelativePath(this.Record) ;
+		const searchParams = new URLSearchParams();
+		searchParams.append('pageNumber', page);
 
 		if (filters) {
 			const { Subject, Method, Name, StartDate, EndDate } = filters;
-			if (Subject.value && Subject.enabled) base_path += `&subject=${Subject.value}`;
-			if (Method.value && Method.enabled) base_path += `&method=${Method.value}`;
-			if (Name.value) base_path += `&name=${encodeURIComponent(Name.value)}`;
-			if (StartDate.value) base_path += `&startDate=${dateParamString(StartDate.value)}`;
-			if (EndDate.value) base_path += `&endDate=${dateParamString(EndDate.value, true)}`;
+			if (Subject.value && Subject.enabled) searchParams.append('subject', Subject.value);
+			if (Method.value && Method.enabled) searchParams.append('method', Method.value);
+			if (Name.value) searchParams.append('name', Name.value);
+			if (StartDate.value) searchParams.append('startDate', dateParamString(StartDate.value));
+			if (EndDate.value) searchParams.append('endDate', dateParamString(EndDate.value, true));
 		}
 
-		return this.getRequest(base_path);
+		url = url.concat(`?${searchParams.toString()}`);
+		return this.getRequest(url);
 	}
 	static getRequest(base_path) {
 		const getRequest = new Request(`${this.Host}${base_path}`, {
@@ -185,24 +185,18 @@ export class CpdService {
 		return this.getRequest(CpdRoutes.RelativePath(CpdRoutes.JobTarget(jobTitle)));
 	}
 	static getTargetRecords(filters, userId) {
-		let api_path = userId ? CpdRoutes.RelativePath(CpdRoutes.UserReportRecords(userId)) : CpdRoutes.RelativePath(CpdRoutes.ReportRecords);
+		let url = userId ? CpdRoutes.RelativePath(CpdRoutes.UserReportRecords(userId)) : CpdRoutes.RelativePath(CpdRoutes.ReportRecords);
 		if (filters) {
-			api_path += '?';
-			const query_params = [];
+			const searchParams = new URLSearchParams();
 			const { Subject, Method, Name, StartDate, EndDate } = filters;
-			if (Subject.value && Subject.enabled) query_params.push(`subject=${Subject.value}`);
-			if (Method.value && Method.enabled) query_params.push(`method=${Method.value}`);
-			if (Name.value) query_params.push(`recordName=${encodeURIComponent(Name.value)}`);
-			if (StartDate.value) query_params.push(`startDate=${dateParamString(StartDate.value)}`);
-			if (EndDate.value) query_params.push(`endDate=${dateParamString(EndDate.value, true)}`);
-			for (let i = 0; i < query_params.length; i++) {
-				if (i > 0) {
-					api_path += '&';
-				}
-				api_path += query_params[i];
-			}
+			if (Subject.value && Subject.enabled) searchParams.append('subject', Subject.value);
+			if (Method.value && Method.enabled) searchParams.append('method', Method.value);
+			if (Name.value) searchParams.append('recordName', Name.value);
+			if (StartDate.value) searchParams.append('startDate', dateParamString(StartDate.value));
+			if (EndDate.value) searchParams.append('endDate', dateParamString(EndDate.value, true));
+			url = url.concat(`?${searchParams.toString()}`);
 		}
-		return this.getRequest(api_path);
+		return this.getRequest(url);
 	}
 	static getTypes() {
 		return [ {
