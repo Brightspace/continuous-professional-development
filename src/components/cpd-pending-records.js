@@ -60,9 +60,9 @@ class PendingRecords extends BaseMixin(LitElement) {
 		this.page = 1;
 		this.hideSearchOptions = true;
 		this.filters = {
-			Name: 0,
-			StartDate: 0,
-			EndDate: 0
+			Name: null,
+			StartDate: null,
+			EndDate: null
 		};
 	}
 

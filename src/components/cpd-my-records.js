@@ -133,11 +133,11 @@ class MyCpdRecords extends BaseMixin(LitElement) {
 		this.page = 1;
 
 		this.filters = {
-			Subject: 0,
-			Method: 0,
-			Name: 0,
-			StartDate: 0,
-			EndDate: 0
+			Subject: null,
+			Method: null,
+			Name: null,
+			StartDate: null,
+			EndDate: null
 		};
 
 		this.hideSearchOptions = true;
