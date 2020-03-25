@@ -105,7 +105,7 @@ export class CpdService {
 		searchParams.append('pageNumber', page);
 		if (filters) {
 			const { Name, StartDate, EndDate } = filters;
-			if (Name.value) searchParams.append('recordName', Name.value);
+			if (Name.value) searchParams.append('awardName', Name.value);
 			if (StartDate.value) searchParams.append('startDate', dateParamString(StartDate.value));
 			if (EndDate.value) searchParams.append('endDate', dateParamString(EndDate.value, true));
 		}
