@@ -59,11 +59,7 @@ class PendingRecords extends BaseMixin(LitElement) {
 		this.cpdService = CpdServiceFactory.getCpdService();
 		this.page = 1;
 		this.hideSearchOptions = true;
-		this.filters = {
-			Name: null,
-			StartDate: null,
-			EndDate: null
-		};
+		this.filters = {};
 	}
 
 	connectedCallback() {
