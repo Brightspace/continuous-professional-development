@@ -199,7 +199,7 @@ class MyCpdRecords extends BaseMixin(LitElement) {
 				this.cpdRecords = data;
 			});
 		if (!this.viewUserId) {
-			this.cpdService.getProgress(this.filters)
+			this.cpdService.getProgress(null, this.filters)
 				.then((data) =>
 					this.progress = this.lowercasePropertyNames(data)
 				);

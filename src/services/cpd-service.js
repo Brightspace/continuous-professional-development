@@ -113,7 +113,7 @@ export class CpdService {
 		return this.getRequest(url);
 	}
 
-	static getProgress(filters, userId) {
+	static getProgress(userId, filters) {
 		let url = userId ? CpdRoutes.RelativePath(CpdRoutes.UserProgress(userId)) : CpdRoutes.RelativePath(CpdRoutes.Progress);
 		if (filters) {
 			const searchParams = new URLSearchParams();
