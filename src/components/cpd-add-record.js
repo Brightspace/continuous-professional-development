@@ -231,7 +231,7 @@ class AddCpdRecord extends BaseMixin(LitElement) {
 			Answers: this.questions.map(question => {
 				return {
 					QuestionId: question.Id,
-					AnswerText: this.shadowRoot.querySelector(`#answerText_${question.Id}`).getContent()
+					Text: this.shadowRoot.querySelector(`#answerText_${question.Id}`).getContent()
 				};
 			})
 		};
