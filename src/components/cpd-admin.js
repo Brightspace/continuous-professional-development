@@ -1,5 +1,5 @@
 
-import 'd2l-tabs/d2l-tabs';
+import '@brightspace-ui/core/components/tabs/tabs';
 import './cpd-admin-job-list';
 import './cpd-manage-targets';
 import './cpd-admin-items';

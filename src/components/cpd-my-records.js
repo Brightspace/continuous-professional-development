@@ -3,6 +3,7 @@ import '@brightspace-ui/core/components/button/button-icon';
 import '@brightspace-ui/core/components/button/button-subtle';
 import '@brightspace-ui/core/components/dialog/dialog-confirm';
 import '@brightspace-ui/core/components/inputs/input-checkbox';
+import '@brightspace-ui/core/components/inputs/input-date';
 import '@brightspace-ui/core/components/inputs/input-search';
 import '@brightspace-ui/core/components/dropdown/dropdown-button';
 import '@brightspace-ui/core/components/dropdown/dropdown-menu';
@@ -258,12 +259,13 @@ class MyCpdRecords extends BaseMixin(LitElement) {
 				this.filters.Method = e.detail;
 				break;
 			case 'start_date_picker':
-				this.filters.StartDate = e.detail;
+				this.filters.StartDate = e.target.value;
 				break;
 			case 'end_date_picker':
-				this.filters.EndDate = e.detail;
+				this.filters.EndDate = e.target.value;
 				break;
 		}
+		console.log(this.filters);
 		this.page = 1;
 		this.updatePrintRecordLink();
 		this.fetchRecords();
@@ -463,15 +465,15 @@ class MyCpdRecords extends BaseMixin(LitElement) {
 					<div>
 						<label id="date_label">${this.localize('dateRange')}</label>
 						<div class="dateFilterControls">
-							<d2l-date-picker
+							<d2l-input-date
 								id="start_date_picker"
-								@d2l-date-picker-value-changed="${this.updateFilter}"
-								></d2l-date-picker>
+								@change="${this.updateFilter}"
+								></d2l-input-date>
 							<label>${this.localize('to')}</label>
-							<d2l-date-picker
+							<d2l-input-date
 								id="end_date_picker"
-								@d2l-date-picker-value-changed="${this.updateFilter}"
-								></d2l-date-picker>
+								@change="${this.updateFilter}"
+								></d2l-input-date>
 						</div>
 					</div>
 				</div>

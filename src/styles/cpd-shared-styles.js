@@ -1,8 +1,8 @@
 import { css } from 'lit-element/lit-element';
 
 export const cpdSharedStyles = css`
-	d2l-date-picker {
-		width: 138px;
+	d2l-input-date {
+		width: 200px;
 	}
 
 	.searchContainer {

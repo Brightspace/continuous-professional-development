@@ -212,11 +212,12 @@ export class CpdService {
 			if (Subject && Subject.value && Subject.enabled) searchParams.append('subject', Subject.value);
 			if (Method && Method.value && Method.enabled) searchParams.append('method', Method.value);
 			if (Name && Name.value) searchParams.append('recordName', Name.value);
-			if (StartDate && StartDate.value) searchParams.append('startDate', dateParamString(StartDate.value));
-			if (EndDate && EndDate.value) searchParams.append('endDate', dateParamString(EndDate.value, true));
+			if (StartDate && StartDate !== '') searchParams.append('startDate', dateParamString(StartDate.value));
+			if (EndDate && EndDate !== '') searchParams.append('endDate', dateParamString(EndDate.value, true));
 		}
 
 		url = url.concat(`?${searchParams.toString()}`);
+		console.log(url);
 		return this.getRequest(url);
 	}
 	static getRequest(base_path) {

@@ -1,5 +1,6 @@
 import '@brightspace-ui/core/components/button/button';
-import 'd2l-tabs/d2l-tabs';
+import '@brightspace-ui/core/components/tabs/tabs';
+import '@brightspace-ui/core/components/tabs/tab-panel';
 import './cpd-manage-targets';
 import './cpd-my-records';
 import './cpd-add-record';
