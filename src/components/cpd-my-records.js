@@ -10,7 +10,6 @@ import '@brightspace-ui/core/components/dropdown/dropdown-menu';
 import '@brightspace-ui/core/components/menu/menu';
 import '@brightspace-ui/core/components/menu/menu-item-link';
 import '@brightspace-ui/core/components/link/link';
-import 'd2l-date-picker/d2l-date-picker';
 import 'd2l-navigation/d2l-navigation-link-back';
 import './page-select';
 import './filter-select';
