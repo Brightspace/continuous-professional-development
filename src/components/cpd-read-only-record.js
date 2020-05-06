@@ -1,4 +1,3 @@
-import '@brightspace-ui/core/components/inputs/input-date';
 import '@brightspace-ui/core/components/inputs/input-text';
 import './attachments';
 import 'd2l-navigation/d2l-navigation-link-back';

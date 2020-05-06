@@ -217,7 +217,6 @@ export class CpdService {
 		}
 
 		url = url.concat(`?${searchParams.toString()}`);
-		console.log(url);
 		return this.getRequest(url);
 	}
 	static getRequest(base_path) {

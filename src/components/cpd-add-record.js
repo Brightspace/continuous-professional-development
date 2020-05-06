@@ -326,6 +326,8 @@ class AddCpdRecord extends BaseMixin(LitElement) {
 					<li>
 						<label for="dateCompletedPicker" class=d2l-label-text>${this.localize('dateCompleted')}</label>
 						<d2l-input-date
+							label="Date Completed"
+							label-hidden
 							id="dateCompletedPicker"
 							required
 							value="${this.record && this.record.DateCompleted && formatForDatePicker(this.record.DateCompleted) || formatForDatePicker(new Date())}"

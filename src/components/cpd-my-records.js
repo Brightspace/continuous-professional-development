@@ -464,11 +464,15 @@ class MyCpdRecords extends BaseMixin(LitElement) {
 						<label id="date_label">${this.localize('dateRange')}</label>
 						<div class="dateFilterControls">
 							<d2l-input-date
+								label="Start"
+								label-hidden
 								id="start_date_picker"
 								@change="${this.updateFilter}"
 								></d2l-input-date>
 							<label>${this.localize('to')}</label>
 							<d2l-input-date
+								label="End"
+								label-hidden
 								id="end_date_picker"
 								@change="${this.updateFilter}"
 								></d2l-input-date>
