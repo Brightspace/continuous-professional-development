@@ -40,7 +40,7 @@ class PendingRecords extends BaseMixin(LitElement) {
 			cpdSharedStyles,
 			cpdTableStyles,
 			css`
-			div[role=host] {
+			#host {
 				min-height: 650px;
 			}
 
@@ -240,7 +240,7 @@ class PendingRecords extends BaseMixin(LitElement) {
 			}
 		];
 		return html`
-			<div role="host">
+			<div id="host">
 				<div role="main">
 					<d2l-view-toggle id="view_toggle" .toggleOptions=${toggleOptions} selectedOption="pending" @d2l-view-toggle-changed="${this.updateFilter}"></d2l-view-toggle>
 					<div class="searchContainer">
