@@ -72,7 +72,6 @@
     "@brightspace-ui/core": "^1",
     "@brightspace-ui/intl": "^3.0.1",
     "@webcomponents/webcomponentsjs": "^2",
-    "d2l-date-picker": "github:BrightspaceUI/date-picker#semver:^2",
     "d2l-dnd-sortable": "Brightspace/dnd-sortable#semver:^3",
     "d2l-fetch": "Brightspace/d2l-fetch.git#semver:^2",
     "d2l-fetch-auth": "^1.2.0",

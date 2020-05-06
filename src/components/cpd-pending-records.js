@@ -40,6 +40,10 @@ class PendingRecords extends BaseMixin(LitElement) {
 			cpdSharedStyles,
 			cpdTableStyles,
 			css`
+			div[role=host] {
+				min-height: 650px;
+			}
+
 			div[role=main] {
 				display: grid;
 				grid-gap: 1rem;
@@ -105,6 +109,7 @@ class PendingRecords extends BaseMixin(LitElement) {
 				this.filters.Dismissed = e.detail.view === 'dismissed';
 				break;
 		}
+		console.log(e);
 		this.page = 1;
 		this.fetchAwards();
 	}
@@ -236,47 +241,49 @@ class PendingRecords extends BaseMixin(LitElement) {
 			}
 		];
 		return html`
-			<div role="main">
-				<d2l-view-toggle id="view_toggle" .toggleOptions=${toggleOptions} selectedOption="pending" @d2l-view-toggle-changed="${this.updateFilter}"></d2l-view-toggle>
-				<div class="searchContainer">
-					<d2l-input-search
-						id="search_input"
-						label="${this.localize('search')}"
-						placeholder="${this.localize('searchPendingPlaceholder')}"
-						@d2l-input-search-searched="${this.updateFilter}"
-						>
-					</d2l-input-search>
+			<div role="host">
+				<div role="main">
+					<d2l-view-toggle id="view_toggle" .toggleOptions=${toggleOptions} selectedOption="pending" @d2l-view-toggle-changed="${this.updateFilter}"></d2l-view-toggle>
+					<div class="searchContainer">
+						<d2l-input-search
+							id="search_input"
+							label="${this.localize('search')}"
+							placeholder="${this.localize('searchPendingPlaceholder')}"
+							@d2l-input-search-searched="${this.updateFilter}"
+							>
+						</d2l-input-search>
 
-					<d2l-button-subtle
-						text="${this.renderShowHideButtonText()}"
-						@click="${this.toggleSearchOptions}"
-						>
-					</d2l-button-subtle>
-				</div>
-
-			<div
-				class="search_options"
-				?disabled=${this.hideSearchOptions}
-				>
-				<div>
-					<label id="date_label">${this.localize('dateRange')}</label>
-					<div class="dateFilterControls">
-						<d2l-input-date
-							id="start_date_picker"
-							@change="${this.updateFilter}"
-							></d2l-input-date>
-						<label>${this.localize('to')}</label>
-						<d2l-input-date
-							id="end_date_picker"
-							@change="${this.updateFilter}"
-							></d2l-input-date>
+						<d2l-button-subtle
+							text="${this.renderShowHideButtonText()}"
+							@click="${this.toggleSearchOptions}"
+							>
+						</d2l-button-subtle>
 					</div>
-				</div>
-			</div>
+
+					<div
+						class="search_options"
+						?disabled=${this.hideSearchOptions}
+						>
+						<div>
+							<label id="date_label">${this.localize('dateRange')}</label>
+							<div class="dateFilterControls">
+								<d2l-input-date
+									id="start_date_picker"
+									@change="${this.updateFilter}"
+									></d2l-input-date>
+								<label>${this.localize('to')}</label>
+								<d2l-input-date
+									id="end_date_picker"
+									@change="${this.updateFilter}"
+									></d2l-input-date>
+							</div>
+						</div>
+					</div>
 
 				${ this.pendingRecords && this.pendingRecords.Objects && this.pendingRecords.Objects.length > 0 ?
 		this.renderTable() : html`<d2l-message-container message="${this.localize('noResultsFound')}"></d2l-message-container>`
 }
+				</div>
 			</div>
 		`;
 	}

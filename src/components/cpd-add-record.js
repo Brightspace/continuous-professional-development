@@ -1,7 +1,7 @@
 import '@brightspace-ui/core/components/button/button';
+import '@brightspace-ui/core/components/inputs/input-date';
 import '@brightspace-ui/core/components/inputs/input-text';
 import './attachments';
-import 'd2l-date-picker/d2l-date-picker';
 import 'd2l-html-editor/d2l-html-editor';
 import { css, html, LitElement } from 'lit-element/lit-element';
 import { dateParamString, formatForDatePicker, getHours, getMinutes, getTotalMinutes } from '../helpers/time-helper';
@@ -325,12 +325,11 @@ class AddCpdRecord extends BaseMixin(LitElement) {
 					</li>
 					<li>
 						<label for="dateCompletedPicker" class=d2l-label-text>${this.localize('dateCompleted')}</label>
-						<d2l-date-picker
+						<d2l-input-date
 							id="dateCompletedPicker"
 							required
 							value="${this.record && this.record.DateCompleted && formatForDatePicker(this.record.DateCompleted) || formatForDatePicker(new Date())}"
-							@d2l-date-picker-value-changed="${this.updateFilter}"
-						></d2l-date-picker>
+						></d2l-input-date>
 					</li>
 					<li>
 						<label>${this.localize('addEvidence')}</label>

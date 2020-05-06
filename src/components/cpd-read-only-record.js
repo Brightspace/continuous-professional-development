@@ -1,6 +1,6 @@
+import '@brightspace-ui/core/components/inputs/input-date';
 import '@brightspace-ui/core/components/inputs/input-text';
 import './attachments';
-import 'd2l-date-picker/d2l-date-picker';
 import 'd2l-navigation/d2l-navigation-link-back';
 import 'd2l-html-editor/d2l-html-editor';
 import { css, html, LitElement } from 'lit-element/lit-element';

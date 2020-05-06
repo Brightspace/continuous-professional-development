@@ -264,7 +264,6 @@ class MyCpdRecords extends BaseMixin(LitElement) {
 				this.filters.EndDate = e.target.value;
 				break;
 		}
-		console.log(this.filters);
 		this.page = 1;
 		this.updatePrintRecordLink();
 		this.fetchRecords();
