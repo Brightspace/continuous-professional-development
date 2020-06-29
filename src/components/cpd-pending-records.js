@@ -100,10 +100,10 @@ class PendingRecords extends BaseMixin(LitElement) {
 				this.filters.Name = e.detail;
 				break;
 			case 'start_date_picker':
-				this.filters.StartDate = e.detail;
+				this.filters.StartDate = e.target.value;
 				break;
 			case 'end_date_picker':
-				this.filters.EndDate = e.detail;
+				this.filters.EndDate = e.target.value;
 				break;
 			case 'view_toggle':
 				this.filters.Dismissed = e.detail.view === 'dismissed';
