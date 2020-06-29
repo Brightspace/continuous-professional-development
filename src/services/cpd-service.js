@@ -159,8 +159,8 @@ export class CpdService {
 		if (filters) {
 			const { Name, StartDate, EndDate, Dismissed } = filters;
 			if (Name && Name.value) searchParams.append('awardName', Name.value);
-			if (StartDate && StartDate.value) searchParams.append('startDate', dateParamString(StartDate.value));
-			if (EndDate && EndDate.value) searchParams.append('endDate', dateParamString(EndDate.value, true));
+			if (StartDate) searchParams.append('startDate', dateParamString(StartDate));
+			if (EndDate) searchParams.append('endDate', dateParamString(EndDate, true));
 			if (Dismissed) searchParams.append('dismissed', true);
 		}
 		url = url.concat(`?${searchParams.toString()}`);
@@ -175,8 +175,8 @@ export class CpdService {
 			if (Subject && Subject.value && Subject.enabled) searchParams.append('subject', Subject.value);
 			if (Method && Method.value && Method.enabled) searchParams.append('method', Method.value);
 			if (Name && Name.value) searchParams.append('recordName', Name.value);
-			if (StartDate && StartDate.value) searchParams.append('startDate', dateParamString(StartDate.value));
-			if (EndDate && EndDate.value) searchParams.append('endDate', dateParamString(EndDate.value, true));
+			if (StartDate) searchParams.append('startDate', dateParamString(StartDate));
+			if (EndDate) searchParams.append('endDate', dateParamString(EndDate, true));
 			url = url.concat(`?${searchParams.toString()}`);
 		}
 		return this.getRequest(url);
@@ -212,8 +212,8 @@ export class CpdService {
 			if (Subject && Subject.value && Subject.enabled) searchParams.append('subject', Subject.value);
 			if (Method && Method.value && Method.enabled) searchParams.append('method', Method.value);
 			if (Name && Name.value) searchParams.append('recordName', Name.value);
-			if (StartDate && StartDate !== '') searchParams.append('startDate', dateParamString(StartDate.value));
-			if (EndDate && EndDate !== '') searchParams.append('endDate', dateParamString(EndDate.value, true));
+			if (StartDate) searchParams.append('startDate', dateParamString(StartDate));
+			if (EndDate) searchParams.append('endDate', dateParamString(EndDate, true));
 		}
 
 		url = url.concat(`?${searchParams.toString()}`);
@@ -246,8 +246,8 @@ export class CpdService {
 			if (Subject && Subject.value) searchParams.append('subject', Subject.value);
 			if (Method && Method.value) searchParams.append('method', Method.value);
 			if (Name && Name.value) searchParams.append('recordName', Name.value);
-			if (StartDate && StartDate.value) searchParams.append('startDate', StartDate.value);
-			if (EndDate && EndDate.value) searchParams.append('endDate', EndDate.value);
+			if (StartDate) searchParams.append('startDate', StartDate);
+			if (EndDate) searchParams.append('endDate', EndDate);
 			url = url.concat(`?${searchParams.toString()}`);
 		}
 		return this.getRequest(url);
@@ -307,8 +307,8 @@ export class CpdService {
 			if (Subject && Subject.value && Subject.enabled) searchParams.append('subject', Subject.value);
 			if (Method && Method.value && Method.enabled) searchParams.append('method', Method.value);
 			if (Name && Name.value) searchParams.append('recordName', Name.value);
-			if (StartDate && StartDate.value) searchParams.append('startDate', dateParamString(StartDate.value));
-			if (EndDate && EndDate.value) searchParams.append('endDate', dateParamString(EndDate.value, true));
+			if (StartDate) searchParams.append('startDate', dateParamString(StartDate));
+			if (EndDate) searchParams.append('endDate', dateParamString(EndDate, true));
 			url = url.concat(`?${searchParams.toString()}`);
 		}
 		return `${CpdRoutes.Host}${url}`;
