@@ -406,7 +406,7 @@ class MyCpdRecords extends BaseMixin(LitElement) {
 		return html`
 			<div role="main">
 				${this.renderHeader(this.viewUserId)}
-				<d2l-cpd-progress-box ?hasEnforcedTarget=${this.hasEnforcedTarget} .progress="${this.progress}"></d2l-cpd-progress-box>
+				<d2l-cpd-progress-box ?hasEnforcedTarget=${this.hasEnforcedTarget} viewUserId=${this.viewUserId} .progress="${this.progress}"></d2l-cpd-progress-box>
 				${this.viewUserId ? html `` : html`
 					<div class="header">
 						<d2l-button id="new_record" primary @click="${this.newRecordButtonClicked}">

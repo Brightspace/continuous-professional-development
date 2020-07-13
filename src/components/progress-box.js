@@ -18,6 +18,9 @@ class CpdProgressBox extends BaseMixin(LitElement) {
 			},
 			selectedView: {
 				type: String
+			},
+			viewUserId: {
+				type: Number
 			}
 		};
 	}
@@ -61,6 +64,7 @@ class CpdProgressBox extends BaseMixin(LitElement) {
 		super();
 		this.selectedView = 'overall';
 		this.cpdService = CpdServiceFactory.getCpdService();
+		this.viewUserId = 0;
 	}
 
 	connectedCallback() {
@@ -75,7 +79,7 @@ class CpdProgressBox extends BaseMixin(LitElement) {
 	}
 
 	renderTargetLink() {
-		if (!this.hasEnforcedTarget) {
+		if (this.viewUserId && !this.hasEnforcedTarget) {
 			return html`<div class="progress-header-link">
 					<d2l-link @click="${this.navigateAdjustTargets}">${this.localize('adjustTargets')}</d2l-link>
 				</div>`;
