@@ -138,8 +138,6 @@ class MyCpdRecords extends BaseMixin(LitElement) {
 		this.filters = {};
 
 		this.hideSearchOptions = true;
-
-		this.viewUserId = 0;
 	}
 
 	connectedCallback() {
@@ -411,7 +409,7 @@ class MyCpdRecords extends BaseMixin(LitElement) {
 				<d2l-cpd-progress-box
 					?hasEnforcedTarget=${this.hasEnforcedTarget}
 					.progress="${this.progress}"
-					viewUserId=${this.viewUserId}
+					viewUserId=${this.viewUserId || 0}
 					>
 				</d2l-cpd-progress-box>
 				${this.viewUserId ? html `` : html`
