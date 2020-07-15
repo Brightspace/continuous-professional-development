@@ -181,8 +181,8 @@ class CpdRecordReport extends BaseMixin(LitElement) {
 			Subject: {value: this.subject, enabled: true},
 			Method: {value: this.method, enabled: true},
 			Name: {value: this.recordName},
-			StartDate: {value: this.startDate},
-			EndDate: {value: this.endDate}
+			StartDate: this.startDate,
+			EndDate: this.endDate
 		};
 
 		this.cpdService.getUserInfo(this.userId)
