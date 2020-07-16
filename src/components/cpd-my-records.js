@@ -168,7 +168,7 @@ class MyCpdRecords extends BaseMixin(LitElement) {
 		if (itemText === 'print_records') {
 			window.open(this.printRecordLink, '_blank');
 		} else {
-			this.cpdService.getCsvExport(this.viewUserId, this.getCsvFileName());
+			this.cpdService.getCsvExport(this.viewUserId, this.getCsvFileName(), this.filters);
 		}
 	}
 

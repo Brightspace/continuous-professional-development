@@ -112,14 +112,24 @@ export class CpdService {
 		}
 		this.downloadBlob(blob, attachment.name);
 	}
-	static getCsvExport(userId, fileName) {
-		let path;
+	static getCsvExport(userId, fileName, filters) {
+		let url;
 		if (userId) {
-			path = `${this.Host}${CpdRoutes.RelativePath(CpdRoutes.UserCSVReport(userId))}`;
+			url = `${this.Host}${CpdRoutes.RelativePath(CpdRoutes.UserCSVReport(userId))}`;
 		} else {
-			path = `${this.Host}${CpdRoutes.RelativePath(CpdRoutes.CSVReport)}`;
+			url = `${this.Host}${CpdRoutes.RelativePath(CpdRoutes.CSVReport)}`;
 		}
-		const request = new Request(path);
+		if (filters) {
+			const searchParams = new URLSearchParams();
+			const { Subject, Method, Name, StartDate, EndDate } = filters;
+			if (Subject && Subject.value && Subject.enabled) searchParams.append('subject', Subject.value);
+			if (Method && Method.value && Method.enabled) searchParams.append('method', Method.value);
+			if (Name && Name.value) searchParams.append('recordName', Name.value);
+			if (StartDate) searchParams.append('startDate', dateParamString(StartDate));
+			if (EndDate) searchParams.append('endDate', dateParamString(EndDate, true));
+			url = url.concat(`?${searchParams.toString()}`);
+		}
+		const request = new Request(url);
 		return d2lfetch.fetch(request)
 			.then(resp => resp.blob())
 			.then(blob => {
