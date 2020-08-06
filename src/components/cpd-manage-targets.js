@@ -160,6 +160,7 @@ class ManageCpdTargets extends BaseMixin(LitElement) {
 									required type="number"
 									min="0"
 									value="${getHours(this.dialogData.StructuredMinutes)}"
+									novalidate
 								>
 								</d2l-input-text>
 								<label for="structuredMinutes">${this.localize('minutes')}</label>
@@ -171,6 +172,7 @@ class ManageCpdTargets extends BaseMixin(LitElement) {
 									min="0"
 									max="59"
 									value="${getMinutes(this.dialogData.StructuredMinutes)}"
+									novalidate
 								>
 								</d2l-input-text>
 							</div>
@@ -187,6 +189,7 @@ class ManageCpdTargets extends BaseMixin(LitElement) {
 									type="number"
 									min="0"
 									value="${getHours(this.dialogData.UnstructuredMinutes)}"
+									novalidate
 								>
 								</d2l-input-text>
 								<label for="unstructuredMinutes">${this.localize('minutes')}</label>
@@ -199,6 +202,7 @@ class ManageCpdTargets extends BaseMixin(LitElement) {
 									min="0"
 									max="59"
 									value="${getMinutes(this.dialogData.UnstructuredMinutes)}"
+									novalidate
 								>
 								</d2l-input-text>
 							</div>

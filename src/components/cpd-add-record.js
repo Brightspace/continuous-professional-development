@@ -261,7 +261,7 @@ class AddCpdRecord extends BaseMixin(LitElement) {
 				<ul>
 					<li>
 						<label for="recordName" class="d2l-label-text">${this.localize('name')}</label>
-						<d2l-input-text autocomplete="off" id="recordName" required value="${this.record && this.record.Name || ''}"></d2l-input-text>
+						<d2l-input-text autocomplete="off" id="recordName" required value="${this.record && this.record.Name || ''}" novalidate></d2l-input-text>
 					</li>
 					<li>
 						<ul class="innerList">
@@ -308,11 +308,11 @@ class AddCpdRecord extends BaseMixin(LitElement) {
 							<div class="credit-time-container">
 								<div>
 									<label for="creditHours" class="d2l-label-text">${this.localize('creditHours')}</label>
-									<d2l-input-text class="numberInput" id="creditHours" required placeholder=${this.localize('enterCreditHours')} type="number" min="0" value="${this.record && getHours(this.record.CreditMinutes) || ''}"></d2l-input-text>
+									<d2l-input-text class="numberInput" id="creditHours" required placeholder=${this.localize('enterCreditHours')} type="number" min="0" value="${this.record && getHours(this.record.CreditMinutes) || ''}" novalidate></d2l-input-text>
 								</div>
 								<div>
 									<label for="creditMinutes" class="d2l-label-text">${this.localize('creditMinutes')}</label>
-									<d2l-input-text class="numberInput" id="creditMinutes" required placeholder=${this.localize('enterCreditMinutes')} type="number" min="0" max="59"  value="${this.record && getMinutes(this.record.CreditMinutes) || ''}"></d2l-input-text>
+									<d2l-input-text class="numberInput" id="creditMinutes" required placeholder=${this.localize('enterCreditMinutes')} type="number" min="0" max="59"  value="${this.record && getMinutes(this.record.CreditMinutes) || ''}" novalidate></d2l-input-text>
 								</div>
 							</div>
 							${this.record && this.record.Grade ? html`
