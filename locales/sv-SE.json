@@ -15,7 +15,7 @@
    "backToJobCpd" : "Tillbaka till jobbtitellistan",
    "backToMyCPD" : "Tillbaka till Min CPD",
    "backToTeam" : "Tillbaka till Mitt team",
-   "backToUserRecords" : "Back to {userDisplayName}'s records",
+   "backToUserRecords" : "Gå tillbaka till posterna för {userDisplayName}",
    "cancel" : "Avbryt",
    "chooseChoice" : "Välj ett {choice}",
    "combined" : "Kombinerad",
@@ -140,9 +140,9 @@
    "type" : "Typ",
    "unstructured" : "Ostrukturerade",
    "userDetails" : "Användarinformation",
-   "userTeam" : "{userDisplayName}'s Team CPD",
-   "userTitle" : "{userDisplayName}'s CPD Record",
+   "userTeam" : "Grupp-CPD för {userDisplayName}",
+   "userTitle" : "CPD-post för {userDisplayName}",
    "viewCPD" : "Visa CPD-post",
-   "viewTeamCPD" : "View Team CPD",
+   "viewTeamCPD" : "Visa team-CPD",
    "yes" : "Ja"
 }

@@ -15,7 +15,7 @@
    "backToJobCpd" : "返回職稱清單",
    "backToMyCPD" : "返回我的 CPD",
    "backToTeam" : "返回我的團隊",
-   "backToUserRecords" : "Back to {userDisplayName}'s records",
+   "backToUserRecords" : "返回 {userDisplayName} 的記錄",
    "cancel" : "取消",
    "chooseChoice" : "選擇 {choice}",
    "combined" : "已組合",
@@ -140,9 +140,9 @@
    "type" : "類型",
    "unstructured" : "非結構性",
    "userDetails" : "使用者詳細資料",
-   "userTeam" : "{userDisplayName}'s Team CPD",
-   "userTitle" : "{userDisplayName}'s CPD Record",
+   "userTeam" : "{userDisplayName} 的團隊 CPD",
+   "userTitle" : "{userDisplayName} 的 CPD 記錄",
    "viewCPD" : "檢視 CPD 記錄",
-   "viewTeamCPD" : "View Team CPD",
+   "viewTeamCPD" : "檢視團隊 CPD",
    "yes" : "是"
 }
