@@ -1,6 +1,6 @@
 # d2l-cpd
 
-[![Build][CI Badge]][CI Branch]
+![Release Badge](https://github.com/Brightspace/continuous-professional-development/workflows/release/badge.svg)
 
 Continuous Professional Development FRA and BSI Customization
 

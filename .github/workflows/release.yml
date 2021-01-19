@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node
         uses: Brightspace/third-party-actions@actions/setup-node
       - name: Install dependencies
-        run: npm install
+        run: npm ci
       - name: Run build
         run: npm run build
       - name: incremental Release
