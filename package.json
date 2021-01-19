@@ -12,7 +12,7 @@
       "appFile": "./index.html",
       "distLocal": "./build/dev",
       "dist": "./build/prod",
-      "envVar": "TRAVIS",
+      "envVar": "GITHUB_ACTIONS",
       "loader": "iframe"
     },
     "frauLocalAppResolver": {
@@ -24,8 +24,8 @@
       "files": "./build/prod/**",
       "moduleType": "app",
       "targetDirectory": "continuous-professional-development",
-      "devTagVar": "TRAVIS_COMMIT",
-      "versionVar": "TRAVIS_TAG"
+      "devTagVar": "GIT_COMMIT",
+			"versionVar": "CPD_VERSION"
     }
   },
   "scripts": {

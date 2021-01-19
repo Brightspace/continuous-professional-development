@@ -1,0 +1,35 @@
+name: release
+on:
+  push:
+    branches:
+      - master
+jobs:
+  release:
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: Brightspace/third-party-actions@actions/checkout
+        with:
+          persist-credentials: false
+      - name: Setup Node
+        uses: Brightspace/third-party-actions@actions/setup-node
+      - name: Install dependencies
+        run: npm install
+      - name: Run build
+        run: npm run build
+      - name: incremental Release
+        id: incremental-release
+        uses: BrightspaceUI/actions/incremental-release@master
+        with:
+          GITHUB_TOKEN: ${{ secrets.D2L_GITHUB_TOKEN }}
+      - name: Publish to CDN
+        if: steps.incremental-release.outputs.VERSION != ''
+        run: npm run publish:dev:cdn
+        env:
+          CPD_VERSION: ${{ steps.incremental-release.outputs.VERSION }}
+          GIT_COMMIT: ${{ steps.info.outputs.GIT_COMMIT }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
