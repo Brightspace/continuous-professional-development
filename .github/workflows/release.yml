@@ -29,7 +29,7 @@ jobs:
         run: npm run publish:dev:cdn
         env:
           CPD_VERSION: ${{ steps.incremental-release.outputs.VERSION }}
-          GIT_COMMIT: ${{ steps.info.outputs.GIT_COMMIT }}
+          GIT_COMMIT: ${{ env.GITHUB_SHA }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
